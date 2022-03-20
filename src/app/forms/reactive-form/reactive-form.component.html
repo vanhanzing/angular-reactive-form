@@ -1,0 +1,171 @@
+<div class="application-details">
+  <form
+    class="application-form"
+    name="applicationForm"
+    [formGroup]="applicationDetailsForm"
+  >
+    <h2>Reactive Form</h2>
+    <hr />
+    <section class="checkbox-section">
+      <h3 style="margin-bottom: 0">What is this water to be used for?*</h3>
+      <div class="water-checkbox">
+        <mat-checkbox
+          *ngFor="let control of waterUse.controls; let i = index"
+          class="checkbox-margin"
+          color="primary"
+          [formControl]="control"
+          id="inlineCheckbox{{ i }}"
+          (change)="getSelectedWaterValue()"
+          >{{ waterUsages[i] }}</mat-checkbox
+        >
+      </div>
+    </section>
+    <section>
+      <table class="form-field" cellspacing="0">
+        <tr>
+          <td>
+            <mat-label class="form-field">Area to be irrigated</mat-label>
+          </td>
+
+          <td>
+            <mat-form-field class="form-field" floatLabel="never">
+              <input
+                type="text"
+                matInput
+                formControlName="areaToIrrigate"
+                placeholder="If known, i.e: 10 ha"
+              />
+            </mat-form-field>
+          </td>
+        </tr>
+      </table>
+    </section>
+    <section>
+      <table class="form-field" cellspacing="0">
+        <tr>
+          <td>
+            <mat-label class="form-field"
+              >Is the license registered under a company?*</mat-label
+            >
+          </td>
+
+          <td>
+            <mat-radio-group
+              formControlName="licenceRegistered"
+              aria-label="Select an option"
+            >
+              <mat-radio-button
+                matInput
+                class="radio-margin"
+                value="true"
+                color="primary"
+                >Yes</mat-radio-button
+              >
+              <mat-radio-button
+                matInput
+                class="radio-margin"
+                value="false"
+                color="primary"
+                >No</mat-radio-button
+              >
+            </mat-radio-group>
+          </td>
+        </tr>
+      </table>
+    </section>
+    <section>
+      <table class="form-field" cellspacing="0" style="margin-top: 10px">
+        <tr>
+          <td>
+            <mat-form-field class="form-field" floatLabel="never">
+              <mat-label>Company Name</mat-label>
+              <input
+                type="text"
+                matInput
+                formControlName="companyName"
+                required
+              />
+            </mat-form-field>
+          </td>
+          <td>
+            <mat-form-field class="form-field" floatLabel="never">
+              <mat-label>ABN Number</mat-label>
+              <input
+                type="text"
+                matInput
+                formControlName="abnNumber"
+                required
+              />
+            </mat-form-field>
+          </td>
+          <td>
+            <button
+              mat-stroked-button
+              color="basic"
+              class="form-field attach-file"
+              (click)="fileUpload.click()"
+              type="button"
+            >
+              <mat-icon class="mat-icon">upload</mat-icon>
+              {{ fileName ? (fileName | slice: 0:30) : "Attach Document" }}
+            </button>
+            <input
+              #fileUpload
+              class="form-field"
+              id="fileInput"
+              hidden
+              type="file"
+              (change)="fileChange($event.target.files)"
+              name="file"
+              accept=".jpg,.png,.pdf,.csv,.txt"
+            />
+            <mat-error
+              *ngIf="!applicationDetailsForm.controls['attachFile'].valid"
+            >
+              {{ errMsg }}
+            </mat-error>
+          </td>
+        </tr>
+      </table>
+    </section>
+    <section>
+      <table class="form-field" cellspacing="0">
+        <tr>
+          <td>
+            <mat-label class="form-field"
+              ><p class="infrastructure-text">
+                Do you have the required infrastructure, including a bore or a
+                well, into the selected aquifer?*
+              </p></mat-label
+            >
+          </td>
+
+          <td>
+            <mat-form-field class="form-field">
+              <mat-select formControlName="infrastructure">
+                <mat-option value="null" hidden disabled>--</mat-option>
+                <mat-option value="In Use">In Use</mat-option>
+                <mat-option value="Needs Testing">Needs Testing</mat-option>
+                <mat-option value="No infrastructure"
+                  >No infrastructure</mat-option
+                >
+                <mat-option value="Other">Other</mat-option>
+              </mat-select>
+            </mat-form-field>
+          </td>
+        </tr>
+      </table>
+    </section>
+    <section style="margin-top: 30px; display: flex; justify-content: flex-end">
+      <button
+        color="primary"
+        mat-raised-button
+        aria-label="submit form"
+        (click)="submit()"
+      >
+        <mat-icon class="mat-icon">add_circle_outline</mat-icon>
+        Submit
+      </button>
+    </section>
+  </form>
+</div>

@@ -1,0 +1,62 @@
+mat-card {
+  width: 55%;
+  flex-wrap: wrap;
+}
+.checkbox-section {
+  margin-top: 15px;
+}
+.water-checkbox {
+  display: flex;
+  flex-wrap: wrap;
+}
+.checkbox-margin {
+  flex: 1 0 21%;
+  margin: 5px;
+  font-size: 16px;
+}
+.form-field {
+  width: 100%;
+  font-size: 16px;
+  /* margin-bottom: 5px; */
+}
+.file-input {
+  /* display: hidden; */
+  /* z-index: 3; */
+  /* margin-top: -48px; */
+  /* float: right; */
+}
+.radio-margin {
+  margin: 0 10px;
+}
+.checkbox-margin-left {
+  margin-top: 10px;
+  font-size: 16px;
+}
+.checkbox-margin-left p {
+  margin-left: 10px;
+  font-size: 16px;
+  margin-bottom: 0;
+}
+.infrastructure-text {
+  margin-bottom: 0;
+  margin-right: 20px;
+}
+.fileControl-wrapper {
+  position: relative;
+  width: 360px;
+}
+.mat-form-field {
+  width: 100%;
+}
+
+.mat-icon {
+  font-size: 18px;
+  margin-top: 5px;
+}
+.attach-file {
+  margin-bottom: 7px;
+  margin-left: 5px;
+  overflow: hidden !important;
+  text-overflow: ellipsis !important;
+  white-space: nowrap;
+}

@@ -1,0 +1,17 @@
+.form-container {
+  display: flex;
+  justify-content: center;
+  padding: 20px;
+}
+
+mat-card {
+  /* min-height: 500px; */
+  width: inherit;
+
+  display: flex;
+  padding: 20px;
+}
+
+mat-card div {
+  width: 100%;
+}
